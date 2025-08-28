@@ -1,0 +1,61 @@
+drop table if exists employees;
+
+create table employees(
+employee_id serial primary key,
+first_name varchar(50) not null,
+last_name varchar(50) not null,
+departement varchar(50),
+salary decimal(10,2) check (salary>0),
+joining_date date not null,
+age int check (age>=18)
+);
+
+INSERT INTO employees (first_name, last_name, departement, salary, joining_date, age) VALUES
+('John', 'Doe', 'Engineering', 75000.00, '2020-05-10', 30),
+('Alice', 'Smith', 'Marketing', 60000.00, '2019-03-12', 28),
+('Bob', 'Johnson', 'Sales', 58000.00, '2021-07-01', 35),
+('Diana', 'Evans', 'Human Resources', 62000.00, '2018-11-23', 40),
+('Charles', 'Brown', 'Finance', 68000.00, '2022-01-15', 45),
+('Emily', 'Davis', 'Engineering', 77000.00, '2023-02-20', 26),
+('Frank', 'Wilson', 'Marketing', 61000.00, '2020-08-30', 33),
+('Grace', 'Lee', 'Sales', 55000.00, '2021-09-14', 29),
+('Henry', 'Walker', 'Finance', 69000.00, '2017-12-05', 38),
+('Isabella', 'Clark', 'Engineering', 80000.00, '2024-06-01', 27);
+
+alter table employees rename column departement to department;
+
+select * from employees;
+
+select first_name,department from employees;
+
+update employees set salary=salary*1.10  where department='Engineering';
+
+delete from  employees where age >34;
+
+alter table employees add column email varchar(50);
+
+alter table employees rename column department to dept_name;
+
+select first_name from employees where joining_date>'2021-01-01';
+
+alter table employees alter column salary type integer;
+
+select first_name,last_name,age,salary from employees order by age desc, salary desc;
+
+INSERT INTO employees (first_name, last_name, dept_name, salary, joining_date, age)
+VALUES ('Raj', 'Singh', 'Marketing', 60000, '2023-09-15', 30);
+
+
+update employees set age=age+1;
+
+select * from employees;
+
+
+
+
+
+
+
+
+
+
